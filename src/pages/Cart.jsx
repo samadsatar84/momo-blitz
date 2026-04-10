@@ -1,12 +1,13 @@
 // pages/Cart.jsx
 import { useCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+
+const DELIVERY_CHARGES = 200;
 
 export default function Cart() {
   const { cart, total, removeFromCart } = useCart();
-  const navigate = useNavigate();
+  const finalTotal = total + DELIVERY_CHARGES;
 
   if (cart.length === 0) {
     return (
@@ -90,14 +91,14 @@ export default function Cart() {
               {/* Delivery Fee */}
               <div className="flex justify-between mb-4 text-gray-700 pb-4 border-b">
                 <span>Delivery Fee:</span>
-                <span className="text-green-600 font-bold">FREE</span>
+                <span className="font-bold text-orange-600">Rs. {DELIVERY_CHARGES}</span>
               </div>
 
               {/* Total */}
               <div className="bg-gray-100 rounded-lg p-4 mb-6">
                 <div className="flex justify-between items-center">
                   <span className="font-bold text-gray-800 text-base md:text-lg">Total:</span>
-                  <span className="text-3xl md:text-4xl font-black text-red-600">Rs. {total}</span>
+                  <span className="text-3xl md:text-4xl font-black text-red-600">Rs. {finalTotal}</span>
                 </div>
               </div>
 

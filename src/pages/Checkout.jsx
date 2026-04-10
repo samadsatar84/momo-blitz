@@ -2,12 +2,14 @@
 import { useCart } from "../context/CartContext";
 import { useState } from "react";
 import MobilePaymentForm from "../components/MobilePaymentForm";
-import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
+const DELIVERY_CHARGES = 200;
+
 export default function Checkout() {
   const { cart, total } = useCart();
+  const finalTotal = total + DELIVERY_CHARGES;
   const [paymentMethod, setPaymentMethod] = useState("jazzcash");
   const [customerInfo, setCustomerInfo] = useState({
     name: "",
@@ -211,6 +213,21 @@ export default function Checkout() {
                   />
                   <span className="ml-3 text-base md:text-lg font-semibold">📱 Easypaisa</span>
                 </label>
+
+                {/* COD Option */}
+                <label className="flex items-center p-4 border-2 rounded-lg cursor-pointer hover:border-blue-500 transition active:scale-95"
+                  style={{ borderColor: paymentMethod === "cod" ? "#2563eb" : "#d1d5db" }}
+                >
+                  <input
+                    type="radio"
+                    name="payment"
+                    value="cod"
+                    checked={paymentMethod === "cod"}
+                    onChange={(e) => setPaymentMethod(e.target.value)}
+                    className="w-5 h-5 cursor-pointer"
+                  />
+                  <span className="ml-3 text-base md:text-lg font-semibold">💵 Cash on Delivery (COD)</span>
+                </label>
               </div>
             </motion.div>
 
@@ -259,12 +276,12 @@ export default function Checkout() {
                   <span>Rs. {total}</span>
                 </div>
                 <div className="flex justify-between mb-3 text-gray-700 text-sm md:text-base">
-                  <span>Delivery:</span>
-                  <span className="text-green-600 font-bold">Free</span>
+                  <span>Delivery Charges:</span>
+                  <span className="font-bold text-orange-600">Rs. {DELIVERY_CHARGES}</span>
                 </div>
                 <div className="border-t-2 pt-3 flex justify-between items-center">
                   <span className="font-bold text-gray-800 text-base md:text-lg">Total:</span>
-                  <span className="text-2xl md:text-3xl font-black text-red-600">Rs. {total}</span>
+                  <span className="text-2xl md:text-3xl font-black text-red-600">Rs. {finalTotal}</span>
                 </div>
               </div>
 

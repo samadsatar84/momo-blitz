@@ -7,35 +7,35 @@ const deals = [
     description: "12 Pcs Chicken Steam Momos + 2 Brownies + 1 Litre Drink",
     price: 1100,
     icon: "🎉",
-    image: "https://images.unsplash.com/photo-1609501676725-7186f017a4b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8ZW58MHx8fHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+    image: "fest1.png"
   },
   { 
     name: "ROLL DUO SAVER", 
     description: "2 Chicken Paratha Rolls + 2 Regular Drinks",
     price: 520,
     icon: "🌯",
-    image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc45e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8ZW58MHx8fHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+    image: "fest2.png"
   },
   { 
     name: "DESI FEAST (FULL)", 
     description: "Chicken Biryani Full Plate + Fresh Salad + Raita + 1 Regular Drink",
     price: 450,
     icon: "🍚",
-    image: "https://images.unsplash.com/photo-1585820817529-e876ca0f7f83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8ZW58MHx8fHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+    image: "bircom1.png"
   },
   { 
     name: "SWEET BIRYANI COMBO", 
     description: "Chicken Biryani (Half Plate) + Raita + Salad + 1 Brownie + Soft Drink",
     price: 470,
     icon: "🍚",
-    image: "https://images.unsplash.com/photo-1604908176997-431f3c88a8b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8ZW58MHx8fHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+    image: "bircom2.png"
   },
   { 
     name: "THE BLITZ MIX", 
     description: "6 Pcs Chicken Steam Momos + 1 Chicken Paratha Roll + Regular Drink",
     price: 600,
     icon: "🔥",
-    image: "https://images.unsplash.com/photo-1609501676725-7186f017a4b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8ZW58MHx8fHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+    image: "comb3.png"
   },
 ];
 

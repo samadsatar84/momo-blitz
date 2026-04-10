@@ -10,17 +10,17 @@ const menuSections = [
       { 
         name: "Steamed Chicken Momos (6 pcs)", 
         price: 350, 
-        image: "https://images.unsplash.com/photo-1609501676725-7186f017a4b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8ZW58MHx8fHx8fDA%3D&auto=format&fit=crop&w=500&q=60" 
+        image: "momo1ss.jpg" 
       },
       { 
         name: "Chicken Fried Momos (6 pcs)", 
         price: 400, 
-        image: "https://images.unsplash.com/photo-1585822266842-9d6cfe26a21d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8ZW58MHx8fHx8fDA%3D&auto=format&fit=crop&w=500&q=60" 
+        image: "momo2.jpg.jpg" 
       },
       { 
         name: "Chicken Cheese Momos (6 pcs)", 
         price: 450, 
-        image: "https://images.unsplash.com/photo-1609501676725-7186f017a4b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8ZW58MHx8fHx8fDA%3D&auto=format&fit=crop&w=500&q=60" 
+        image: "momo2s.jpg" 
       },
     ]
   },
@@ -32,12 +32,12 @@ const menuSections = [
       { 
         name: "Chicken Biryani Half Plate (with Salad + Raita)", 
         price: 250, 
-        image: "https://images.unsplash.com/photo-1604908176997-431f3c88a8b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8ZW58MHx8fHx8fDA%3D&auto=format&fit=crop&w=500&q=60" 
+        image: "bir1.jpg" 
       },
       { 
         name: "Chicken Biryani Full Plate (with Salad + Raita)", 
         price: 400, 
-        image: "https://images.unsplash.com/photo-1585820817529-e876ca0f7f83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8ZW58MHx8fHx8fDA%3D&auto=format&fit=crop&w=500&q=60" 
+        image: "biryani2.jpg" 
       },
     ]
   },
@@ -49,22 +49,22 @@ const menuSections = [
       { 
         name: "Chicken Macaroni", 
         price: 250, 
-        image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8ZW58MHx8fHx8fDA%3D&auto=format&fit=crop&w=500&q=60" 
+        image: "microni1.jpg" 
       },
       { 
         name: "Baked Chicken Wings", 
         price: 400, 
-        image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc45e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8ZW58MHx8fHx8fDA%3D&auto=format&fit=crop&w=500&q=60" 
+        image: "wings1.jpg" 
       },
       { 
         name: "Chicken Paratha Roll", 
         price: 200, 
-        image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc45e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8ZW58MHx8fHx8fDA%3D&auto=format&fit=crop&w=500&q=60" 
+        image: "roll1.jpg" 
       },
       { 
         name: "Chicken Cheese Paratha Roll", 
         price: 270, 
-        image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc45e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8ZW58MHx8fHx8fDA%3D&auto=format&fit=crop&w=500&q=60" 
+        image: "roll2.jpg" 
       },
     ]
   },
@@ -76,22 +76,22 @@ const menuSections = [
       { 
         name: "Brownie", 
         price: 150, 
-        image: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8ZW58MHx8fHx8fDA%3D&auto=format&fit=crop&w=500&q=60" 
+        image: "br1.webp" 
       },
       { 
         name: "Sundae", 
         price: 200, 
-        image: "https://images.unsplash.com/photo-1563805042-7684c019e157?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8ZW58MHx8fHx8fDA%3D&auto=format&fit=crop&w=500&q=60" 
+        image: "sun1.jpeg" 
       },
       { 
         name: "Dream Cake (Small)", 
         price: 400, 
-        image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8ZW58MHx8fHx8fDA%3D&auto=format&fit=crop&w=500&q=60" 
+        image: "drm1.jpg" 
       },
       { 
         name: "Bento Cake", 
         price: 650, 
-        image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8ZW58MHx8fHx8fDA%3D&auto=format&fit=crop&w=500&q=60" 
+        image: "bent1.webp" 
       },
     ]
   },
@@ -101,14 +101,14 @@ const menuSections = [
     color: "from-blue-500 to-cyan-600",
     items: [
       { 
-        name: "Coke (Small 250ml)", 
-        price: 50, 
-        image: "https://images.unsplash.com/photo-1603543957267-18c8e3d0ace7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8ZW58MHx8fHx8fDA%3D&auto=format&fit=crop&w=500&q=60" 
+        name: "Buddy Pack (330ml)", 
+        price: 80, 
+        image: "cok1.webp" 
       },
       { 
-        name: "Mango Lassi (Large 500ml)", 
-        price: 150, 
-        image: "https://images.unsplash.com/photo-1566084922221-61d47d67b01b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8ZW58MHx8fHx8fDA%3D&auto=format&fit=crop&w=500&q=60" 
+        name: "1 Litre Drink", 
+        price: 160, 
+        image: "cok2.jpg" 
       },
     ]
   },
