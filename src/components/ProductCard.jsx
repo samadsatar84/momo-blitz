@@ -34,8 +34,8 @@ export default function ProductCard({ item }) {
       </div>
 
       {/* Content */}
-      <div className="p-3 sm:p-4 md:p-5 flex flex-col flex-grow">
-        <h2 className="font-bold text-gray-800 line-clamp-2 text-sm sm:text-base mb-2 sm:mb-3 flex-grow">
+      <div className="p-2 sm:p-3 md:p-4 flex flex-col flex-grow">
+        <h2 className="font-bold text-gray-800 line-clamp-2 text-xs sm:text-sm md:text-base mb-2 flex-grow">
           {item.name}
         </h2>
 

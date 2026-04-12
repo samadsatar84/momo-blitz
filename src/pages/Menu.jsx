@@ -118,25 +118,25 @@ export default function Menu() {
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Header */}
-      <div className="bg-gradient-to-r from-red-600 to-red-700 text-white py-8">
-        <h1 className="text-5xl font-bold text-center">🔥 MOMO BLITZ</h1>
-        <p className="text-center text-red-100 mt-2">Hot & Fresh Daily | 12:00 PM to 12:00 AM</p>
+      <div className="bg-gradient-to-r from-red-600 to-red-700 text-white py-5 sm:py-8">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center">🔥 MOMO BLITZ</h1>
+        <p className="text-center text-red-100 mt-2 text-xs sm:text-sm md:text-base">Hot & Fresh Daily | 12:00 PM to 12:00 AM</p>
       </div>
 
       {/* Menu Sections */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 py-8 sm:py-12">
         {menuSections.map((section, sectionIndex) => (
-          <div key={sectionIndex} className="mb-12">
+          <div key={sectionIndex} className="mb-10 sm:mb-12">
             {/* Section Header */}
-            <div className={`bg-gradient-to-r ${section.color} rounded-lg p-4 mb-6 shadow-lg`}>
-              <h2 className="text-3xl font-bold text-white flex items-center gap-3">
-                <span className="text-4xl">{section.icon}</span>
+            <div className={`bg-gradient-to-r ${section.color} rounded-lg p-3 sm:p-4 mb-5 sm:mb-6 shadow-lg`}>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white flex items-center gap-2 sm:gap-3">
+                <span className="text-2xl sm:text-3xl md:text-4xl">{section.icon}</span>
                 {section.title}
               </h2>
             </div>
 
             {/* Section Items Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
               {section.items.map((item, itemIndex) => (
                 <ProductCard key={itemIndex} item={item} />
               ))}
@@ -146,9 +146,9 @@ export default function Menu() {
       </div>
 
       {/* Footer Info */}
-      <div className="bg-red-600 text-white py-6 text-center mt-12">
-        <p className="text-lg font-semibold">📱 For Delivery and Pickup Contact: 0306 7730467</p>
-        <p className="text-red-100 mt-1">Fresh food is prepared for every order | Bahawalpur Only</p>
+      <div className="bg-red-600 text-white py-5 sm:py-6 text-center mt-10 sm:mt-12">
+        <p className="text-sm sm:text-lg font-semibold">📱 For Delivery and Pickup Contact: 0306 7730467</p>
+        <p className="text-red-100 mt-1 text-xs sm:text-sm">Fresh food is prepared for every order | Bahawalpur Only</p>
       </div>
     </div>
   );

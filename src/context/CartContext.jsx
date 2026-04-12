@@ -18,10 +18,29 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const removeFromCart = (itemName) => {
+    setCart(cart.filter((x) => x.name !== itemName));
+  };
+
+  const increaseQty = (itemName) => {
+    setCart(cart.map(x =>
+      x.name === itemName ? { ...x, qty: x.qty + 1 } : x
+    ));
+  };
+
+  const decreaseQty = (itemName) => {
+    setCart(cart.map(x => {
+      if (x.name === itemName) {
+        return { ...x, qty: x.qty > 1 ? x.qty - 1 : 1 };
+      }
+      return x;
+    }));
+  };
+
   const total = cart.reduce((a, c) => a + c.price * c.qty, 0);
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, total }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, increaseQty, decreaseQty, total }}>
       {children}
     </CartContext.Provider>
   );

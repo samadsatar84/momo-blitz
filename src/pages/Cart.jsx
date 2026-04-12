@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const DELIVERY_CHARGES = 200;
 
 export default function Cart() {
-  const { cart, total, removeFromCart } = useCart();
+  const { cart, total, removeFromCart, increaseQty, decreaseQty } = useCart();
   const finalTotal = total + DELIVERY_CHARGES;
 
   if (cart.length === 0) {
@@ -53,13 +53,30 @@ export default function Cart() {
               >
                 <div className="flex-1">
                   <h3 className="text-lg md:text-2xl font-bold text-gray-800">{item.name}</h3>
-                  <p className="text-gray-600 text-sm md:text-base mt-1">Quantity: <span className="font-bold text-red-600">x{item.qty}</span></p>
+                  <p className="text-gray-600 text-sm md:text-base mt-1">Price: <span className="font-bold text-red-600">Rs. {item.price}</span></p>
                   <p className="text-xl md:text-2xl font-black text-red-600 mt-2">Rs. {item.price * item.qty}</p>
+                  
+                  {/* Quantity Controls */}
+                  <div className="flex items-center gap-2 mt-4">
+                    <button
+                      onClick={() => decreaseQty(item.name)}
+                      className="bg-orange-500 hover:bg-orange-600 text-white w-10 h-10 rounded-lg font-bold transition flex items-center justify-center"
+                    >
+                      −
+                    </button>
+                    <span className="bg-gray-100 px-4 py-2 rounded-lg font-bold text-gray-800 min-w-12 text-center">{item.qty}</span>
+                    <button
+                      onClick={() => increaseQty(item.name)}
+                      className="bg-green-600 hover:bg-green-700 text-white w-10 h-10 rounded-lg font-bold transition flex items-center justify-center"
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
 
                 <button
                   onClick={() => removeFromCart(item.name)}
-                  className="w-full md:w-auto bg-red-600 hover:bg-red-700 text-white px-4 md:px-6 py-2 md:py-3 rounded-lg font-bold transition text-sm md:text-base"
+                  className="w-full md:w-auto bg-red-600 hover:bg-red-700 text-white px-4 md:px-6 py-2 md:py-3 rounded-lg font-bold transition text-sm md:text-base min-h-[44px]"
                 >
                   🗑️ Remove
                 </button>

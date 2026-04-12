@@ -20,10 +20,10 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="mb-4 sm:mb-6"
           >
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-black mb-2 sm:mb-3 break-words">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-black mb-2 sm:mb-3 break-words">
               🔥 MOMO BLITZ 🔥
             </h1>
-            <div className="text-xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent mb-3 sm:mb-4">
+            <div className="text-lg sm:text-2xl md:text-4xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent mb-3 sm:mb-4">
               Hot & Fresh Daily
             </div>
           </motion.div>
@@ -32,7 +32,7 @@ export default function Home() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-base sm:text-lg md:text-2xl text-gray-200 mb-6 sm:mb-8 font-semibold"
+            className="text-sm sm:text-base md:text-2xl text-gray-200 mb-5 sm:mb-8 font-semibold"
           >
             Delicious Momos • Authentic Biryani • Fast Food
           </motion.p>
@@ -41,17 +41,17 @@ export default function Home() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex gap-3 sm:gap-4 flex-col sm:flex-row justify-center items-center mb-6 sm:mb-8 w-full"
+            className="flex gap-2 sm:gap-4 flex-col sm:flex-row justify-center items-center mb-5 sm:mb-8 w-full"
           >
             <Link 
               to="/menu" 
-              className="w-full sm:w-auto bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 px-6 sm:px-10 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg transition transform hover:scale-105 shadow-lg"
+              className="w-full sm:w-auto bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 px-6 sm:px-10 py-3 sm:py-4 rounded-lg font-bold text-sm sm:text-lg transition transform hover:scale-105 shadow-lg min-h-[44px] flex items-center justify-center"
             >
               🛒 Order Now
             </Link>
             <Link 
               to="/deals" 
-              className="w-full sm:w-auto bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 px-6 sm:px-10 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg transition transform hover:scale-105 shadow-lg text-gray-900"
+              className="w-full sm:w-auto bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 px-6 sm:px-10 py-3 sm:py-4 rounded-lg font-bold text-sm sm:text-lg transition transform hover:scale-105 shadow-lg text-gray-900 min-h-[44px] flex items-center justify-center"
             >
               💰 View Deals
             </Link>
@@ -61,7 +61,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-base sm:text-lg md:text-xl text-red-200 font-semibold"
+            className="text-xs sm:text-base md:text-xl text-red-200 font-semibold"
           >
             📱 Call: 0306 7730467 | 🏪 Bahawalpur Only
           </motion.p>

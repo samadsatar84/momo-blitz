@@ -10,7 +10,7 @@ const DELIVERY_CHARGES = 200;
 export default function Checkout() {
   const { cart, total } = useCart();
   const finalTotal = total + DELIVERY_CHARGES;
-  const [paymentMethod, setPaymentMethod] = useState("jazzcash");
+  const [paymentMethod, setPaymentMethod] = useState("cod");
   const [customerInfo, setCustomerInfo] = useState({
     name: "",
     phone: "",
@@ -184,36 +184,6 @@ export default function Checkout() {
               <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6">💳 Payment Method</h2>
 
               <div className="space-y-3 md:space-y-4">
-                {/* JazzCash Option */}
-                <label className="flex items-center p-4 sm:p-5 border-2 rounded-lg cursor-pointer hover:border-green-500 transition active:scale-95 min-h-[56px]"
-                  style={{ borderColor: paymentMethod === "jazzcash" ? "#16a34a" : "#d1d5db" }}
-                >
-                  <input
-                    type="radio"
-                    name="payment"
-                    value="jazzcash"
-                    checked={paymentMethod === "jazzcash"}
-                    onChange={(e) => setPaymentMethod(e.target.value)}
-                    className="w-6 h-6 cursor-pointer"
-                  />
-                  <span className="ml-3 text-base sm:text-lg font-semibold">📱 JazzCash</span>
-                </label>
-
-                {/* Easypaisa Option */}
-                <label className="flex items-center p-4 sm:p-5 border-2 rounded-lg cursor-pointer hover:border-purple-500 transition active:scale-95 min-h-[56px]"
-                  style={{ borderColor: paymentMethod === "easypaisa" ? "#9333ea" : "#d1d5db" }}
-                >
-                  <input
-                    type="radio"
-                    name="payment"
-                    value="easypaisa"
-                    checked={paymentMethod === "easypaisa"}
-                    onChange={(e) => setPaymentMethod(e.target.value)}
-                    className="w-6 h-6 cursor-pointer"
-                  />
-                  <span className="ml-3 text-base sm:text-lg font-semibold">📱 Easypaisa</span>
-                </label>
-
                 {/* COD Option */}
                 <label className="flex items-center p-4 sm:p-5 border-2 rounded-lg cursor-pointer hover:border-blue-500 transition active:scale-95 min-h-[56px]"
                   style={{ borderColor: paymentMethod === "cod" ? "#2563eb" : "#d1d5db" }}
