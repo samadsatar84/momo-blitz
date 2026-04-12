@@ -47,7 +47,7 @@ export default function ProductCard({ item }) {
               position: "bottom-center"
             });
           }}
-          className="w-full bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white px-3 sm:px-4 py-2 sm:py-3 rounded-lg font-bold text-xs sm:text-sm md:text-base transition transform hover:scale-105 active:scale-95"
+          className="w-full bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white px-3 sm:px-4 py-3 sm:py-4 rounded-lg font-bold text-sm sm:text-base md:text-base transition transform hover:scale-105 active:scale-95 min-h-[44px] flex items-center justify-center"
         >
           🛒 Add to Cart
         </button>

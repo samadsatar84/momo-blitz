@@ -144,7 +144,7 @@ export default function Checkout() {
                     placeholder="Enter your full name"
                     value={customerInfo.name}
                     onChange={handleInputChange}
-                    className="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-red-500 focus:outline-none transition text-base"
+                    className="w-full p-3 sm:p-4 border-2 border-gray-300 rounded-lg focus:border-red-500 focus:outline-none transition text-base min-h-[44px]"
                   />
                 </div>
 
@@ -156,7 +156,7 @@ export default function Checkout() {
                     placeholder="03001234567"
                     value={customerInfo.phone}
                     onChange={handleInputChange}
-                    className="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-red-500 focus:outline-none transition text-base"
+                    className="w-full p-3 sm:p-4 border-2 border-gray-300 rounded-lg focus:border-red-500 focus:outline-none transition text-base min-h-[44px]"
                   />
                 </div>
 
@@ -168,7 +168,7 @@ export default function Checkout() {
                     placeholder="House #, Street, Area"
                     value={customerInfo.address}
                     onChange={handleInputChange}
-                    className="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-red-500 focus:outline-none transition text-base"
+                    className="w-full p-3 sm:p-4 border-2 border-gray-300 rounded-lg focus:border-red-500 focus:outline-none transition text-base min-h-[44px]"
                   />
                 </div>
               </div>
@@ -185,7 +185,7 @@ export default function Checkout() {
 
               <div className="space-y-3 md:space-y-4">
                 {/* JazzCash Option */}
-                <label className="flex items-center p-4 border-2 rounded-lg cursor-pointer hover:border-green-500 transition active:scale-95"
+                <label className="flex items-center p-4 sm:p-5 border-2 rounded-lg cursor-pointer hover:border-green-500 transition active:scale-95 min-h-[56px]"
                   style={{ borderColor: paymentMethod === "jazzcash" ? "#16a34a" : "#d1d5db" }}
                 >
                   <input
@@ -194,13 +194,13 @@ export default function Checkout() {
                     value="jazzcash"
                     checked={paymentMethod === "jazzcash"}
                     onChange={(e) => setPaymentMethod(e.target.value)}
-                    className="w-5 h-5 cursor-pointer"
+                    className="w-6 h-6 cursor-pointer"
                   />
-                  <span className="ml-3 text-base md:text-lg font-semibold">📱 JazzCash</span>
+                  <span className="ml-3 text-base sm:text-lg font-semibold">📱 JazzCash</span>
                 </label>
 
                 {/* Easypaisa Option */}
-                <label className="flex items-center p-4 border-2 rounded-lg cursor-pointer hover:border-purple-500 transition active:scale-95"
+                <label className="flex items-center p-4 sm:p-5 border-2 rounded-lg cursor-pointer hover:border-purple-500 transition active:scale-95 min-h-[56px]"
                   style={{ borderColor: paymentMethod === "easypaisa" ? "#9333ea" : "#d1d5db" }}
                 >
                   <input
@@ -209,13 +209,13 @@ export default function Checkout() {
                     value="easypaisa"
                     checked={paymentMethod === "easypaisa"}
                     onChange={(e) => setPaymentMethod(e.target.value)}
-                    className="w-5 h-5 cursor-pointer"
+                    className="w-6 h-6 cursor-pointer"
                   />
-                  <span className="ml-3 text-base md:text-lg font-semibold">📱 Easypaisa</span>
+                  <span className="ml-3 text-base sm:text-lg font-semibold">📱 Easypaisa</span>
                 </label>
 
                 {/* COD Option */}
-                <label className="flex items-center p-4 border-2 rounded-lg cursor-pointer hover:border-blue-500 transition active:scale-95"
+                <label className="flex items-center p-4 sm:p-5 border-2 rounded-lg cursor-pointer hover:border-blue-500 transition active:scale-95 min-h-[56px]"
                   style={{ borderColor: paymentMethod === "cod" ? "#2563eb" : "#d1d5db" }}
                 >
                   <input
@@ -224,9 +224,9 @@ export default function Checkout() {
                     value="cod"
                     checked={paymentMethod === "cod"}
                     onChange={(e) => setPaymentMethod(e.target.value)}
-                    className="w-5 h-5 cursor-pointer"
+                    className="w-6 h-6 cursor-pointer"
                   />
-                  <span className="ml-3 text-base md:text-lg font-semibold">💵 Cash on Delivery (COD)</span>
+                  <span className="ml-3 text-base sm:text-lg font-semibold">💵 Cash on Delivery (COD)</span>
                 </label>
               </div>
             </motion.div>
