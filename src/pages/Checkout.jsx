@@ -218,9 +218,19 @@ export default function Checkout() {
                   </div>
                 ))}
               </div>
-              <div className="border-t-2 pt-4 flex justify-between items-center text-base sm:text-lg md:text-2xl font-bold">
-                <span>Total:</span>
-                <span className="text-green-600">Rs. {total}</span>
+              <div className="space-y-2 border-t-2 pt-3 text-xs sm:text-sm md:text-base">
+                <div className="flex justify-between text-gray-700">
+                  <span>Subtotal:</span>
+                  <span>Rs. {total}</span>
+                </div>
+                <div className="flex justify-between text-gray-700">
+                  <span>Delivery Charges:</span>
+                  <span className="font-bold text-orange-600">Rs. {DELIVERY_CHARGES}</span>
+                </div>
+                <div className="flex justify-between items-center text-base sm:text-lg md:text-xl font-bold text-green-600 pt-2">
+                  <span>Total:</span>
+                  <span>Rs. {total + DELIVERY_CHARGES}</span>
+                </div>
               </div>
             </div>
 

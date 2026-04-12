@@ -138,45 +138,45 @@ export default function Admin() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+    <div className="min-h-screen bg-gray-50 p-2 sm:p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg p-6 mb-8 shadow-lg">
-          <h1 className="text-4xl font-bold mb-2">📊 Admin Dashboard</h1>
-          <p className="text-red-100">Manage all customer orders in real-time</p>
+        <div className="bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg p-3 sm:p-4 md:p-6 mb-4 sm:mb-6 md:mb-8 shadow-lg">
+          <h1 className="text-xl sm:text-2xl md:text-4xl font-bold mb-1 sm:mb-2">📊 Admin Dashboard</h1>
+          <p className="text-xs sm:text-sm md:text-base text-red-100">Manage all customer orders in real-time</p>
         </div>
 
         {/* Controls */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8">
           {/* Search Box */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <label className="block text-gray-700 font-semibold mb-2">🔍 Search by Phone</label>
+          <div className="bg-white rounded-lg shadow p-3 sm:p-4 md:p-6">
+            <label className="block text-xs sm:text-sm md:text-base text-gray-700 font-semibold mb-2">🔍 Search by Phone</label>
             <input
               type="text"
               placeholder="Enter customer phone..."
               value={searchPhone}
               onChange={(e) => setSearchPhone(e.target.value)}
-              className="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-red-500 focus:outline-none"
+              className="w-full p-2 sm:p-3 border-2 border-gray-300 rounded-lg focus:border-red-500 focus:outline-none text-xs sm:text-sm"
             />
-            {searchPhone && <p className="text-sm text-gray-600 mt-2">{filteredOrders.length} orders found</p>}
+            {searchPhone && <p className="text-xs sm:text-sm text-gray-600 mt-2">{filteredOrders.length} orders found</p>}
           </div>
 
           {/* Stats */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <p className="text-gray-700 font-semibold mb-2">📦 Total Orders</p>
-            <p className="text-4xl font-bold text-red-600">{orders.length}</p>
-            <p className="text-sm text-gray-500 mt-2">Auto-refreshing every 5 sec</p>
+          <div className="bg-white rounded-lg shadow p-3 sm:p-4 md:p-6">
+            <p className="text-xs sm:text-sm md:text-base text-gray-700 font-semibold mb-2">📦 Total Orders</p>
+            <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-red-600">{orders.length}</p>
+            <p className="text-xs sm:text-xs md:text-sm text-gray-500 mt-2">Auto-refreshing every 5 sec</p>
           </div>
 
           {/* Export Button */}
-          <div className="bg-white rounded-lg shadow p-6 flex flex-col justify-between">
+          <div className="bg-white rounded-lg shadow p-3 sm:p-4 md:p-6 flex flex-col justify-between">
             <button
               onClick={exportToCSV}
-              className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold py-3 rounded-lg transition"
+              className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold py-2 sm:py-3 md:py-3 rounded-lg transition text-sm sm:text-base"
             >
               📥 Export to CSV
             </button>
-            <p className="text-sm text-gray-500 text-center mt-2">Download all orders</p>
+            <p className="text-xs sm:text-xs md:text-sm text-gray-500 text-center mt-2">Download all orders</p>
           </div>
         </div>
 
@@ -186,46 +186,46 @@ export default function Admin() {
             <table className="w-full">
               <thead className="bg-red-600 text-white">
                 <tr>
-                  <th className="px-6 py-4 text-left font-bold">Order ID</th>
-                  <th className="px-6 py-4 text-left font-bold">Customer</th>
-                  <th className="px-6 py-4 text-left font-bold">Phone</th>
-                  <th className="px-6 py-4 text-left font-bold">Items</th>
-                  <th className="px-6 py-4 text-left font-bold">Total</th>
-                  <th className="px-6 py-4 text-left font-bold">Payment</th>
-                  <th className="px-6 py-4 text-left font-bold">Status</th>
-                  <th className="px-6 py-4 text-left font-bold">Actions</th>
+                  <th className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-left font-bold text-xs sm:text-sm md:text-base">Order ID</th>
+                  <th className="hidden sm:table-cell px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-left font-bold text-xs sm:text-sm md:text-base">Customer</th>
+                  <th className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-left font-bold text-xs sm:text-sm md:text-base">Phone</th>
+                  <th className="hidden md:table-cell px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-left font-bold text-xs sm:text-sm md:text-base">Items</th>
+                  <th className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-left font-bold text-xs sm:text-sm md:text-base">Total</th>
+                  <th className="hidden sm:table-cell px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-left font-bold text-xs sm:text-sm md:text-base">Payment</th>
+                  <th className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-left font-bold text-xs sm:text-sm md:text-base">Status</th>
+                  <th className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-left font-bold text-xs sm:text-sm md:text-base">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {loading ? (
                   <tr>
-                    <td colSpan="8" className="px-6 py-4 text-center text-gray-500">Loading orders...</td>
+                    <td colSpan="8" className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-center text-xs sm:text-sm text-gray-500">Loading orders...</td>
                   </tr>
                 ) : filteredOrders.length === 0 ? (
                   <tr>
-                    <td colSpan="8" className="px-6 py-4 text-center text-gray-500">
+                    <td colSpan="8" className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-center text-xs sm:text-sm text-gray-500">
                       {searchPhone ? "No orders found for this phone number" : "No orders yet"}
                     </td>
                   </tr>
                 ) : (
                   filteredOrders.map((order) => (
                     <tr key={order._id} className="border-b hover:bg-gray-50 transition">
-                      <td className="px-6 py-4 font-mono text-sm text-gray-700">
+                      <td className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 font-mono text-xs sm:text-sm md:text-base text-gray-700">
                         {order.orderId || order._id.slice(-8)}
-                        {order.source === 'local' && <span className="ml-2 text-xs bg-yellow-200 text-yellow-800 px-2 py-1 rounded">LOCAL</span>}
+                        {order.source === 'local' && <span className="ml-1 text-xs bg-yellow-200 text-yellow-800 px-1 sm:px-2 py-0.5 rounded">LOCAL</span>}
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="hidden sm:table-cell px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">
                         <div>
-                          <p className="font-semibold text-gray-800">{order.customerInfo.name}</p>
-                          <p className="text-sm text-gray-600">{order.customerInfo.address}</p>
+                          <p className="font-semibold text-xs sm:text-sm md:text-base text-gray-800">{order.customerInfo.name}</p>
+                          <p className="text-xs sm:text-xs md:text-sm text-gray-600">{order.customerInfo.address}</p>
                         </div>
                       </td>
-                      <td className="px-6 py-4">
-                        <a href={`tel:${order.customerInfo.phone}`} className="text-blue-600 hover:underline font-mono">
+                      <td className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">
+                        <a href={`tel:${order.customerInfo.phone}`} className="text-blue-600 hover:underline font-mono text-xs sm:text-sm md:text-base">
                           {order.customerInfo.phone}
                         </a>
                       </td>
-                      <td className="px-6 py-4 text-sm max-w-xs">
+                      <td className="hidden md:table-cell px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4 text-xs md:text-sm max-w-xs">
                         <div className="space-y-1">
                           {order.cart.map((item, i) => (
                             <p key={i}>
@@ -234,24 +234,24 @@ export default function Admin() {
                           ))}
                         </div>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">
                         <div>
-                          <p className="text-lg font-bold text-red-600">Rs. {order.total}</p>
+                          <p className="text-sm sm:text-base md:text-lg font-bold text-red-600">Rs. {order.total}</p>
                           {order.deliveryCharges && (
-                            <p className="text-xs text-gray-600">(+Rs. {order.deliveryCharges} delivery)</p>
+                            <p className="text-xs text-gray-600">(+Rs. {order.deliveryCharges})</p>
                           )}
                         </div>
                       </td>
-                      <td className="px-6 py-4">
-                        <span className="text-sm font-mono">
+                      <td className="hidden sm:table-cell px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">
+                        <span className="text-xs sm:text-sm md:text-base font-mono">
                           {order.paymentMethod === "cod" ? "💵 COD" : order.paymentMethod === "jazzcash" ? "🟢 JazzCash" : "🟣 EasyPaisa"}
                         </span>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">
                         <select
                           value={order.status || "pending"}
                           onChange={(e) => updateStatus(order._id, e.target.value)}
-                          className={`px-3 py-1 rounded-full text-sm font-semibold border-0 cursor-pointer ${
+                          className={`px-2 sm:px-3 py-1 rounded text-xs sm:text-sm md:text-base font-semibold border-0 cursor-pointer ${
                             STATUS_COLORS[order.status || "pending"] || "bg-gray-100"
                           }`}
                         >
@@ -262,10 +262,10 @@ export default function Admin() {
                           ))}
                         </select>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-2 sm:px-3 md:px-6 py-2 sm:py-3 md:py-4">
                         <button
                           onClick={() => deleteOrder(order._id)}
-                          className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm font-semibold transition"
+                          className="bg-red-500 hover:bg-red-600 text-white px-2 sm:px-3 py-1 rounded text-xs sm:text-sm font-semibold transition"
                         >
                           🗑️ Delete
                         </button>
@@ -279,9 +279,9 @@ export default function Admin() {
         </div>
 
         {/* Footer Info */}
-        <div className="mt-8 bg-blue-50 border-l-4 border-blue-600 rounded-lg p-6">
-          <h3 className="font-bold text-gray-800 mb-2">💡 How to Use Admin Panel:</h3>
-          <ul className="text-sm text-gray-700 space-y-1">
+        <div className="mt-4 sm:mt-6 md:mt-8 bg-blue-50 border-l-4 border-blue-600 rounded-lg p-3 sm:p-4 md:p-6">
+          <h3 className="font-bold text-xs sm:text-sm md:text-base text-gray-800 mb-2">💡 How to Use Admin Panel:</h3>
+          <ul className="text-xs sm:text-sm md:text-base text-gray-700 space-y-1">
             <li>✓ Orders auto-refresh every 5 seconds - no need to refresh manually</li>
             <li>✓ Click on status dropdown to update order status (confirming → preparing → ready → delivered)</li>
             <li>✓ Click on phone number to call customer directly</li>
