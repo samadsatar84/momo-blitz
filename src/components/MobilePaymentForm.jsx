@@ -39,17 +39,35 @@ export default function MobilePaymentForm({ total, cart, customerInfo, onSuccess
         // Send order to backend
         const response = await API.post('/orders', paymentData);
         
+        // Also save to localStorage as backup
+        const existingOrders = JSON.parse(localStorage.getItem('momoOrders') || '[]');
+        existingOrders.push({ ...paymentData, _id: response.data._id, source: 'backend', createdAt: new Date() });
+        localStorage.setItem('momoOrders', JSON.stringify(existingOrders));
+        
         toast.success(`✅ Order confirmed via Cash on Delivery!`);
         if (onSuccess) {
           onSuccess(response.data);
         }
       } catch (apiError) {
-        // Backend not available - allow payment locally for testing
-        console.warn("Backend not available, processing locally:", apiError.message);
+        // Backend not available - save to localStorage for local processing
+        console.warn("Backend not available, saving to localStorage:", apiError.message);
+        
+        const localOrderData = { 
+          ...paymentData, 
+          _id: 'LOCAL-' + Date.now(),
+          source: 'local',
+          createdAt: new Date(),
+          status: 'confirmed'
+        };
+        
+        // Save to localStorage
+        const existingOrders = JSON.parse(localStorage.getItem('momoOrders') || '[]');
+        existingOrders.push(localOrderData);
+        localStorage.setItem('momoOrders', JSON.stringify(existingOrders));
         
         toast.success(`✅ Order confirmed via Cash on Delivery!`);
         if (onSuccess) {
-          onSuccess(paymentData);
+          onSuccess(localOrderData);
         }
       }
     } catch (error) {

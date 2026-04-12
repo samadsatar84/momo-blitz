@@ -18,13 +18,27 @@ export default function Admin() {
   const [searchPhone, setSearchPhone] = useState("");
   const [loading, setLoading] = useState(true);
 
-  // Fetch orders
+  // Fetch orders from both backend and localStorage
   const fetchOrders = async () => {
     try {
+      // Try to fetch from backend
       const response = await API.get("/orders");
-      setOrders(response.data);
+      let allOrders = response.data || [];
+      
+      // Also get orders from localStorage (created offline)
+      const localOrders = JSON.parse(localStorage.getItem('momoOrders') || '[]');
+      
+      // Combine both, avoiding duplicates
+      const backendIds = new Set(allOrders.map(o => o._id));
+      const uniqueLocalOrders = localOrders.filter(lo => !backendIds.has(lo._id));
+      
+      allOrders = [...allOrders, ...uniqueLocalOrders];
+      setOrders(allOrders);
     } catch (error) {
-      console.error("Error fetching orders:", error);
+      // If backend fails, just use localStorage
+      console.error("Backend error, using localStorage:", error);
+      const localOrders = JSON.parse(localStorage.getItem('momoOrders') || '[]');
+      setOrders(localOrders);
     } finally {
       setLoading(false);
     }
@@ -45,8 +59,20 @@ export default function Admin() {
   // Update order status
   const updateStatus = async (orderId, newStatus) => {
     try {
-      await API.patch(`/orders/${orderId}/status`, { status: newStatus });
-      toast.success(`Order status updated to ${newStatus}`);
+      // Check if it's a local order
+      if (orderId.startsWith('LOCAL-')) {
+        // Update in localStorage
+        const localOrders = JSON.parse(localStorage.getItem('momoOrders') || '[]');
+        const updated = localOrders.map(o => 
+          o._id === orderId ? { ...o, status: newStatus } : o
+        );
+        localStorage.setItem('momoOrders', JSON.stringify(updated));
+        toast.success(`Order status updated to ${newStatus}`);
+      } else {
+        // Update in backend
+        await API.patch(`/orders/${orderId}/status`, { status: newStatus });
+        toast.success(`Order status updated to ${newStatus}`);
+      }
       fetchOrders();
     } catch (error) {
       toast.error("Failed to update status");
@@ -57,8 +83,18 @@ export default function Admin() {
   const deleteOrder = async (orderId) => {
     if (window.confirm("Are you sure you want to delete this order?")) {
       try {
-        await API.delete(`/orders/${orderId}`);
-        toast.success("Order deleted");
+        // Check if it's a local order
+        if (orderId.startsWith('LOCAL-')) {
+          // Delete from localStorage
+          const localOrders = JSON.parse(localStorage.getItem('momoOrders') || '[]');
+          const updated = localOrders.filter(o => o._id !== orderId);
+          localStorage.setItem('momoOrders', JSON.stringify(updated));
+          toast.success("Order deleted");
+        } else {
+          // Delete from backend
+          await API.delete(`/orders/${orderId}`);
+          toast.success("Order deleted");
+        }
         fetchOrders();
       } catch (error) {
         toast.error("Failed to delete order");
@@ -174,7 +210,10 @@ export default function Admin() {
                 ) : (
                   filteredOrders.map((order) => (
                     <tr key={order._id} className="border-b hover:bg-gray-50 transition">
-                      <td className="px-6 py-4 font-mono text-sm text-gray-700">{order.orderId || order._id.slice(-8)}</td>
+                      <td className="px-6 py-4 font-mono text-sm text-gray-700">
+                        {order.orderId || order._id.slice(-8)}
+                        {order.source === 'local' && <span className="ml-2 text-xs bg-yellow-200 text-yellow-800 px-2 py-1 rounded">LOCAL</span>}
+                      </td>
                       <td className="px-6 py-4">
                         <div>
                           <p className="font-semibold text-gray-800">{order.customerInfo.name}</p>
