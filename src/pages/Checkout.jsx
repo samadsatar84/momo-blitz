@@ -4,8 +4,153 @@ import { useState } from "react";
 import MobilePaymentForm from "../components/MobilePaymentForm";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 
 const DELIVERY_CHARGES = 200;
+
+// Function to download receipt as image
+const downloadReceipt = (orderData, customerInfo, cart, total) => {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  
+  canvas.width = 400;
+  canvas.height = 600;
+  
+  // Background
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+  // Border
+  ctx.strokeStyle = '#000000';
+  ctx.lineWidth = 3;
+  ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
+  
+  let y = 40;
+  const lineHeight = 25;
+  
+  // Header
+  ctx.fillStyle = '#000000';
+  ctx.font = 'bold 24px Arial';
+  ctx.textAlign = 'center';
+  ctx.fillText('🔥 MOMO BLITZ 🔥', canvas.width / 2, y);
+  
+  y += 35;
+  ctx.font = '12px Arial';
+  ctx.fillText('ORDER RECEIPT', canvas.width / 2, y);
+  
+  y += 30;
+  ctx.strokeStyle = '#cccccc';
+  ctx.beginPath();
+  ctx.moveTo(20, y);
+  ctx.lineTo(canvas.width - 20, y);
+  ctx.stroke();
+  
+  y += 20;
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#000000';
+  ctx.font = 'bold 12px Arial';
+  
+  // Customer Info
+  ctx.fillText(`Name: ${customerInfo.name}`, 30, y);
+  y += lineHeight;
+  ctx.fillText(`Phone: ${customerInfo.phone}`, 30, y);
+  y += lineHeight;
+  ctx.fillText(`Address: ${customerInfo.address}`, 30, y);
+  
+  y += 25;
+  ctx.strokeStyle = '#cccccc';
+  ctx.beginPath();
+  ctx.moveTo(20, y);
+  ctx.lineTo(canvas.width - 20, y);
+  ctx.stroke();
+  
+  y += 20;
+  ctx.font = 'bold 11px Arial';
+  
+  // Items
+  cart.forEach((item) => {
+    const itemText = `${item.name} x${item.qty}`;
+    const priceText = `Rs. ${item.price * item.qty}`;
+    ctx.fillText(itemText, 30, y);
+    ctx.textAlign = 'right';
+    ctx.fillText(priceText, canvas.width - 30, y);
+    ctx.textAlign = 'left';
+    y += lineHeight;
+  });
+  
+  y += 15;
+  ctx.strokeStyle = '#cccccc';
+  ctx.beginPath();
+  ctx.moveTo(20, y);
+  ctx.lineTo(canvas.width - 20, y);
+  ctx.stroke();
+  
+  y += 20;
+  ctx.font = 'bold 13px Arial';
+  const finalTotal = total + DELIVERY_CHARGES;
+  
+  ctx.fillText('Subtotal:', 30, y);
+  ctx.textAlign = 'right';
+  ctx.fillText(`Rs. ${total}`, canvas.width - 30, y);
+  ctx.textAlign = 'left';
+  
+  y += lineHeight;
+  ctx.fillText('Delivery:', 30, y);
+  ctx.textAlign = 'right';
+  ctx.fillText(`Rs. ${DELIVERY_CHARGES}`, canvas.width - 30, y);
+  ctx.textAlign = 'left';
+  
+  y += 25;
+  ctx.strokeStyle = '#000000';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(20, y);
+  ctx.lineTo(canvas.width - 20, y);
+  ctx.stroke();
+  
+  y += 20;
+  ctx.font = 'bold 16px Arial';
+  ctx.fillStyle = '#dc2626';
+  ctx.fillText('TOTAL:', 30, y);
+  ctx.textAlign = 'right';
+  ctx.fillText(`Rs. ${finalTotal}`, canvas.width - 30, y);
+  ctx.textAlign = 'center';
+  
+  y += 40;
+  ctx.fillStyle = '#000000';
+  ctx.font = 'bold 11px Arial';
+  ctx.fillText('Payment: Cash on Delivery', canvas.width / 2, y);
+  
+  y += 25;
+  ctx.font = '10px Arial';
+  ctx.fillStyle = '#666666';
+  ctx.fillText(`Order Date: ${new Date().toLocaleString()}`, canvas.width / 2, y);
+  
+  y += 30;
+  ctx.fillStyle = '#000000';
+  ctx.font = 'bold 11px Arial';
+  ctx.fillText('✅ Order Confirmed', canvas.width / 2, y);
+  
+  y += 25;
+  ctx.font = '9px Arial';
+  ctx.fillStyle = '#666666';
+  ctx.fillText('Thank you for your order!', canvas.width / 2, y);
+  y += 15;
+  ctx.fillText('Momo Blitz - Halal & Fresh', canvas.width / 2, y);
+  
+  // Download
+  canvas.toBlob((blob) => {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `momo-receipt-${Date.now()}.png`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    toast.success('Receipt downloaded! 📥');
+  });
+};
 
 export default function Checkout() {
   const { cart, total } = useCart();
@@ -93,6 +238,12 @@ export default function Checkout() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <button
+              onClick={() => downloadReceipt({}, customerInfo, cart, total)}
+              className="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 md:py-4 rounded-lg font-bold transition text-sm sm:text-base md:text-lg"
+            >
+              💾 Save Receipt
+            </button>
             <Link
               to="/menu"
               className="flex-1 text-center bg-red-600 hover:bg-red-700 text-white px-6 py-3 md:py-4 rounded-lg font-bold transition text-sm sm:text-base md:text-lg"
